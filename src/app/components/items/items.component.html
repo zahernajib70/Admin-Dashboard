@@ -1,0 +1,176 @@
+<div class="main-customers">
+    <div class="top-bar primary">        
+        <button *ngIf="showInput==false"
+        (click)="showInputMeth()" class="search-button">Search Item</button>
+        <input *ngIf="showInput==true" type="text" class="search-input">
+        <button *ngIf="showInput==true" class="delete" style="border-radius: 0.25rem;"
+        (click)="showInput=false"></button>
+
+        <div 
+        class="toggle-details"
+        (click)="additemModal()">
+            <p class="showDetails">Add new item</p>
+            <p style="font-size: 26px;color: white;">+</p>
+        </div>
+        
+
+    </div>
+
+    <!-- search are -->
+    <div *ngIf="showInput==true" class="search-space">
+
+    </div>
+    <!-- --- -->
+
+    <!-- operations tools -->
+    <div style="margin-left: 1%;">
+
+        <!-- <div class="toggle-details-container">
+
+        </div> -->
+
+        <!-- --- -->
+
+        <!-- new item modal -->
+        <div class="modal" [class.is-active]="showAddItemModal==true">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Adding a new item</p>
+                    <button class="delete" aria-label="close" (click)="showAddItemModal=false"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="input-container">
+                        <label class="add-item-modal-label">Item Title</label>
+                        <input #title type="text" class="add-item-modal-input">
+                    </div>
+                    <div class="input-container">
+                        <label class="add-item-modal-label">Item Price ($ - LBP)</label>
+                        <input #price type="number" class="add-item-modal-input">
+                    </div>
+                    <div class="input-container">
+                        <label class="add-item-modal-label">Item Quantity</label>
+                        <input #quantity type="number" class="add-item-modal-input">
+                    </div>
+                    <div class="input-container">
+                        <label class="add-item-modal-label">Item Category</label>
+                        <input #category type="text" class="add-item-modal-input">
+                    </div>
+                    <div class="input-container">
+                        <label class="add-item-modal-label">Item Description</label>
+                        <textarea #description type="text" class="add-item-modal-textarea"></textarea>
+                    </div>
+                    <div class="input-container image-file-input">
+                        <div style="display: flex;flex-direction: column;align-items: center;gap: 0.5rem;">
+                            <h3>You can add multiple images</h3>
+                            <label class="button is-warning is-small">
+                                <input type="file" (change)="uploadImage($event)" accept="*.png.jpg"
+                                    style="display: none;">
+                                Add image
+                            </label>       
+                        </div>
+ 
+                    </div>
+                    <div class="prviewContainer">
+                        <div
+                         *ngFor="let image of previewUrls"
+                         class="prviewImage"
+                        [ngStyle]="{'background-image':'url('+image+')'}"></div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button" (click)="showAddItemModal=false">Cancel</button>
+                    <button *ngIf="uploading==false" class="button" style="background-color: black;color: white;"
+                        (click)="uplaodItem(title.value,price.value,quantity.value,category.value,description.value)">Add
+                        item</button>
+                </footer>
+            </div>
+        </div>
+        <!-- --- -->
+
+        <!-- new item modal -->
+        <div *ngIf="showItemModal==true" class="modal" [class.is-active]="showItemModal==true">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <input #itemTit type="text" [ngModel]="itemTitle" (keyUp.enter)="editTitle(itemTit.value)"
+                        class="modal-card-title" style="font-weight: bold;font-size: 22px;">
+
+                    <button class="delete" aria-label="close" (click)="showItemModal=false"></button>
+                </header>
+                <section class="modal-card-body">
+                    <app-inside-item [itemId]="itemId"></app-inside-item>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button" (click)="showItemModal=false">Cancel</button>
+                    <button class="button is-danger" (click)="deleteItem()">Delete This Item</button>
+                </footer>
+            </div>
+        </div>
+        <!-- --- -->
+
+
+
+        <!-- upload progress -->
+        <div *ngIf="uploading==true" class="upload-progress-container">
+            <p style="color: rgb(255, 255, 255);font-size: 14px;">uploading {{uploadImageProgress}}%</p>
+            <app-loader></app-loader>
+        </div>
+        <!-- *** -->
+        <div *ngIf="uploaded==true" class="upload-progress-container">
+            <p style="color: rgb(255, 255, 255);font-size: 16px;">Uploaded </p>
+        </div>
+        <!-- --- -->
+
+        <!-- *** -->
+        <div *ngIf="itemdeleted==true" class="upload-progress-container" style="background-color: rgb(247, 42, 6);">
+            <p style="color: rgb(255, 255, 255);font-size: 16px;">Deleted </p>
+        </div>
+        <!-- --- -->
+
+        <!-- options -->
+        <div class="Top-Options">
+            <ul>
+                <li>Most Recent</li>
+                <li>Most Relevant</li>
+            </ul>
+        </div>
+
+        <div class="mock-line"></div>
+
+        <!-- items list -->
+        <ul class="items">
+            <li *ngFor="let item of items" (click)="itemModal(item.key,item.title)">
+                <div class="poster" [ngStyle]="{'background-image': 'url('+item.url[0]+')'}"></div>
+                <div class="info">
+                    <p style="font-weight: bold;font-size: 18px;">{{item.title}}</p>
+                </div>
+                <div class="bottom-info">
+                    <div class="info">
+                        <p style="font-weight: bold;">Price</p>
+                        <p>${{item.price}}</p>
+                    </div>
+                    <div class="info">
+                        <p style="font-weight: bold;">Quantity</p>
+                        <p>{{item.quantity}}</p>
+                    </div>
+                    <!-- <div class="info">
+                        <p style="font-weight: bold;">Category</p>
+                        <p>{{item.category}}</p>
+                    </div> -->
+                </div>
+            </li>
+            <div *ngIf="items.length==0 && loading==false"
+                style="width: 95%;height: 60vh;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+                <h4>No items yet! Add Some</h4>
+            </div>
+            <div *ngIf="loading==true"
+                style="width: 95%;height: 60vh;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+                <app-loader></app-loader>
+            </div>
+        </ul>
+
+        <!-- --- -->
+
+    </div>
+</div>

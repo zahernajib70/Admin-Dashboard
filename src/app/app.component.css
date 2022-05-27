@@ -1,0 +1,34 @@
+/* .main{width:100%;height: 100vh;display: flex;flex-direction: row;}
+.left-bar{width: 12.5%;height: 100vh;overflow: hidden;background-color: #e5e9ec49;
+box-shadow: 3px 0px 5px rgba(126, 124, 124, 0.373);}
+.user-infos-container{position: absolute;top: 1%;right: 1.5%;display: flex;flex-direction: row;
+align-items: center;justify-content: center;gap: 1rem;}
+.avatar{width: 40px;height: 40px;border-radius: 50%;background-color: rgb(255, 255, 255);
+background-position: center;background-repeat: no-repeat;background-size: cover;
+transition: 200ms ease-in-out;}
+.avatar:hover{transform: scale(103%);cursor: pointer;opacity: 0.9;}
+.user-info-dropDown{
+    position: absolute;top: 8.5vh;right:0;width: 15rem;height: 10rem;background-color: #f3f3f3;
+    animation-name: user-info-anim-in;animation-duration: 500ms;transition: ease-in-out;
+    box-shadow: -2px 2px 3px rgba(126, 124, 124, 0.373);padding: 1rem;padding-right: 2rem;z-index: 10;
+}
+.user-info-dropDown p{animation-name: p-anim-in;animation-duration: 1s;transition: ease-in-out;}
+@keyframes user-info-anim-in {
+    from {height: 1rem;}
+    to {height: 10rem;}
+}
+@keyframes p-anim-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+.top-bar{width: 100%;height:8.5vh;
+display: flex;align-items: center;padding-left: 10%;}
+h1{color: white;}
+h2{transition: 500ms ease-in-out;}
+h2:hover{cursor: pointer;text-decoration: underline;}
+h3{cursor: default;font-weight: bold;color: white;}
+ul{list-style-type: none;}
+li{transition: 300ms ease-in-out;font-weight: bold;margin-bottom: 0.5rem;}
+li:hover{cursor: pointer;opacity: 0.8;transform: scale(100.5%);}
+.right-content{width: 87.5%;height: 100vh;overflow: hidden;}
+.signOut:hover{color: rgb(245, 62, 30);} */

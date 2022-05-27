@@ -1,0 +1,90 @@
+
+<main id="main" class="main">
+
+  
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"> Edit Shopowners
+              <button id="Addbutton" type="button" class="btn btn-primary">Add shopowner</button>
+            </h5>
+            <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
+
+            <!-- Table with stripped rows -->
+            <table class="table datatable">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">ShopName</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">phone</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Status</th>
+
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let array of myArray" >
+                  <th scope="row" ></th>
+                  <td>{{array.shopname}}</td>
+                  <td>{{array.email}}</td>
+                  <td>{{array.phone}}</td>
+                  <td>{{array.Address}}</td>
+          
+                  
+                  <td> <span class="badge bg-success" onclick="console.log('approved shopowners')">Approve</span> &nbsp; <span class="badge bg-danger" onclick="console.log('rejected shopowners')">Reject</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+            <!-- End Table with stripped rows -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->
+<!-- 
+<div class="main-dashboard">
+    <div class="top-bar primary">
+    </div>
+    <div class="container">
+        <div class="left">
+            <h1>Edit How you want your shop page to look like to your customers</h1>
+            <form>
+                <label>Shop Name</label>
+                <input #name type="text" (keypress)="changeName(name.value)">
+                <label>Address</label>
+                <input #adress type="text" (keypress)="changeAddress(adress.value)">
+                <label>Description</label>
+                <input #description type="text" (keypress)="changeDescription(description.value)">
+                <label>News Image</label>
+                <input type="file">
+                <br>
+                <button class="button" style="background-color: black;color: white;">Save</button>
+            </form>
+        </div>
+        <div class="right">
+            <h1 style="margin-bottom: 1rem;">This is how your shop will look like for clients</h1>
+            <div class="mobile">
+                <div class="mobile-top-bar">
+                    <fa-icon [icon]="faArrowLeft"></fa-icon>
+                </div>
+                <p class="mobile-shop-title">{{shopname}}</p>
+                <p class="moble-shop-address">{{shopAdress}}</p>
+                <p class="mobile-shop-description">{{shopDescription}}</p>
+                <div class="mobile-shop-news-image"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ -->

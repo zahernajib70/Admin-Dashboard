@@ -1,0 +1,33 @@
+.main-customers{width: 100%;height: 100%;}
+.mock-line{background-color: rgba(128, 128, 128, 0.425);width: 100%;margin-top: 5%;margin-bottom: 5%;height: 1px;}
+.top-bar{width: 100%;height:8.5vh;
+display: flex;align-items:center;justify-content: space-between;padding-left:1.5rem;padding-right: 1.5rem;}
+.container{width: 100%;display: flex;flex-direction: row;flex-wrap: nowrap;padding-top: 1rem;}
+h1{font-weight: bold;font-size: 18px;margin-bottom: 3rem;height: 2rem;width: 100%;text-align: center;}
+.left{width: 80%;height: 91.5vh;border-right: solid 2px rgba(128, 128, 128, 0.247);padding-top: 1rem;}
+form{width: 100%;display: flex;flex-direction: column;align-items: center;}
+label{font-weight: bold;margin-top: 1rem;margin-bottom: 0.5rem;}
+input{border-radius: 0.3rem;background-color: #ced3d649;border: none;padding: 8px;width: 30%;}
+.right{width:30%;height: 91.5vh;display: flex;flex-direction: column;align-items: center;padding-top: 1rem;}
+.mobile{width: 15rem;height: 28rem;border: solid 1px grey;border-radius: 1rem;padding: 1.5%;}
+.mobile-top-bar{width: 100%;height: 5%;}
+.mobile-shop-title{padding: 0;font-size: 14px;margin-top: 0.3rem;font-weight: bold;}
+.moble-shop-address{font-size: 10px;}
+.mobile-shop-description{font-size: 12px;font-weight: lighter;line-height: 0.85rem;margin-top: 0.3rem;}
+.mobile-shop-news-image{width: 100%;height: 7rem;border-radius: 0.3rem;margin-top: 0.7rem;border-radius: 0.3rem;
+background-position: center;background-size: cover;background-image: url('https://blog.businesswire.com/hubfs/Images/All%20Stock%20Images/AdobeStock_76425572-media.jpg');}
+
+
+
+#Addbutton {
+    line-height: 12px;
+    width: 18px;
+    font-size: 8pt;
+    font-family: tahoma;
+    margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    top:20;
+    right:0;
+    color: green;
+}

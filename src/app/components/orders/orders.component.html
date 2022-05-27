@@ -1,0 +1,161 @@
+<div class="main-customers">
+    <div class="top-bar">
+        <h3>Orders</h3>
+        <div class="toggle-details">
+            <p class="showDetails">Show details</p>
+            <div class="field">
+                <input id="switchSmall" type="checkbox" name="switchSmall" [checked]="showInfo" class="switch is-small"
+                    (change)="showInfo=!showInfo">
+                <label for="switchSmall"></label>
+            </div>
+        </div>
+        <div class="toggle-details">
+            <p class="showDetails">Filter by</p>
+            <div class="filter-dropdown">
+                <div (click)="dropDownOn1=!dropDownOn1" class="filterBy-span">{{filterBy}}</div>
+                <ul *ngIf="dropDownOn1==true" class="drop-down-container">
+                    <li (click)="setFilterBy('orderedtAtTimestamp')">Time</li>
+                    <li (click)="setFilterBy('totalPrice')">Price</li>
+                    <li (click)="setFilterBy('orderingToAddress')">Adress</li>
+                    <li (click)="setFilterBy('status')">Status</li>
+
+                </ul>
+            </div>
+            <!-- timestamp -->
+            <div *ngIf="filterBy=='orderedtAtTimestamp'" class="filter-dropdown">
+                <div (click)="dropDownOn1=!dropDownOn1" class="filterBy-span">{{filterByValue}}</div>
+                <ul *ngIf="dropDownOn1==true" class="drop-down-container">
+                    <li (click)="setFilterBy('orderedtAtTimestamp')">Today</li>
+                    <li (click)="setFilterBy('orderedtAtTimestamp')">Yesterday</li>
+                    <li (click)="setFilterBy('orderedtAtTimestamp')">last Month</li>
+
+                </ul>
+            </div>
+            <!-- price range -->
+            <div *ngIf="filterBy=='totalPrice'" class="filter-dropdown">
+                <div (click)="dropDownOn1=!dropDownOn1" class="filterBy-span">{{filterByValue}}</div>
+                <ul *ngIf="dropDownOn1==true" class="drop-down-container">
+                    <input type="text">
+                    <input type="text">
+                </ul>
+            </div>
+            <!-- Address -->
+            <div *ngIf="filterBy=='orderingToAddress'" class="filter-dropdown">
+                <div (click)="dropDownOn1=!dropDownOn1" class="filterBy-span">{{filterByValue}}</div>
+                <ul *ngIf="dropDownOn1==true" class="drop-down-container">
+                    <input type="text">
+                </ul>
+            </div>
+            <!-- Order status -->
+            <div *ngIf="filterBy=='status'" class="filter-dropdown">
+                <div (click)="dropDownOn1=!dropDownOn1" class="filterBy-span">{{filterByValue}}</div>
+                <ul *ngIf="dropDownOn1==true" class="drop-down-container">
+                    <li (click)="setFilterBy('pending')">Pending</li>
+                    <li (click)="setFilterBy('canceled')">Canceled</li>
+                    <li (click)="setFilterBy('delivered')">Delivered</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="toggle-details">
+            <p class="showDetails">Add new item</p>
+            <div class="filter-dropdown">
+                <div (click)="dropDownOn2=!dropDownOn2" class="filterBy-span">{{chosenTopic}}</div>
+                <ul *ngIf="dropDownOn2==true" class="drop-down-container">
+                    <li (click)="additemModal('discounts')">Discounts</li>
+                    <li (click)="additemModal('upcoming')">Upcoming</li>
+                    <li (click)="additemModal('new')">New</li>
+                </ul>
+
+            </div>
+        </div>
+        <button (click)="showInputMeth()" class="search-button">Search Item</button>
+    </div>
+
+    <!-- search are -->
+    <div *ngIf="showInput==true" class="search-space">
+        <div class="search-space-top">
+            <input type="text" *ngIf="showInput==true" class="search-input">
+            <button *ngIf="showInput==true" class="delete" style="border-radius: 0.25rem;"
+                (click)="showInput=false"></button>
+        </div>
+        <div class="mock-line"></div>
+    </div>
+    <!-- --- -->
+    <div class="orders">
+        <h3 style="margin-top: 1rem;margin-left: 0.5rem;">Today's orders</h3>
+        <ul>
+            <div class="top-table">
+                <p class="order-individual" style="width: 14rem;">Id</p>
+                <p class="order-individual">To name</p>
+                <p class="order-individual">To phone number</p>
+                <p class="order-individual">To Address</p>
+                <p class="order-individual">Order status</p>
+                <p class="order-individual">Total Price $</p>
+                <p class="order-individual">Manage</p>
+
+            </div>
+            <li *ngFor="let order of todayOrders">
+                <p class="order-individual" style="width: 14rem;">{{order.id}}</p>
+                <p class="order-individual">{{order.orderingToName}}</p>
+                <p class="order-individual">{{order.orderingToPhoneNumber}}</p>
+                <p class="order-individual">{{order.orderingToAddress}}</p>
+                <p *ngIf="order.status!='canceled'" class="order-individual"
+                    [ngStyle]="{'color': order.status ==='pending' ? 'orange' : 'green'}">
+                    {{order.status}}</p>
+                <p *ngIf="order.status=='canceled'" class="order-individual" style="color: tomato;">
+                    {{order.status}}</p>
+                <p class="order-individual">{{order.totalPrice}}</p>
+                <div class="order-individual" style="display: flex;flex-direction: row;justify-content: center;">
+                    <p *ngIf="order.status=='pending'" class="cancel" (click)="setorderToCancel(order.id)">Cancel</p>
+                    <p *ngIf="order.status=='canceled' || order.status=='delivered'" class="canceled">Cancel</p>
+                </div>
+
+            </li>
+        </ul>
+        <!-- // -->
+        <!-- Top Price Orders -->
+        <h3 style="margin-top: 1rem;margin-left: 0.5rem;">Top Price orders</h3>
+        <ul>
+            <div class="top-table">
+                <p class="order-individual" style="width: 14rem;">Id</p>
+                <p class="order-individual">To name</p>
+                <p class="order-individual">To phone number</p>
+                <p class="order-individual">To Address</p>
+                <p class="order-individual">Order status</p>
+                <p class="order-individual">Total Price $</p>
+                <p class="order-individual">Manage</p>
+
+            </div>
+            <li *ngFor="let order of topPriceOrders">
+                <p class="order-individual" style="width: 14rem;">{{order.id}}</p>
+                <p class="order-individual">{{order.orderingToName}}</p>
+                <p class="order-individual">{{order.orderingToPhoneNumber}}</p>
+                <p class="order-individual">{{order.orderingToAddress}}</p>
+                <p *ngIf="order.status!='canceled'" class="order-individual"
+                    [ngStyle]="{'color': order.status ==='pending' ? 'orange' : 'green'}">
+                    {{order.status}}</p>
+                <p *ngIf="order.status=='canceled'" class="order-individual" style="color: tomato;">
+                    {{order.status}}</p>
+                <p class="order-individual">{{order.totalPrice}}</p>
+                <div class="order-individual" style="display: flex;flex-direction: row;justify-content: center;">
+                    <p *ngIf="order.status=='pending'" class="cancel" (click)="setorderToCancel(order.id)">Cancel</p>
+                    <p *ngIf="order.status=='canceled' || order.status=='delivered'" class="canceled">Cancel</p>
+                </div>
+
+            </li>
+        </ul>
+        <!-- cancel popup -->
+        <div *ngIf="isCancelClicked==true" class="modal" [class.is-active]="isCancelClicked==true">
+            <div class="modal-card" style="width: 18rem;box-shadow: 0 3px 3px 3px grey;border-radius: 0.5rem;">
+                <section class="modal-card-body" style="display: flex;flex-direction: column;justify-content: center;">
+                    <p>This action can not be undone</p>
+                    <div style="display:flex;flex-direction: row;justify-content: space-evenly;margin-top: 1rem;">
+                        <button class="button is-primary" (click)="isCancelClicked=false">Go Back</button>
+                        <button class="button is-danger" (click)="cancelOrder()">Cancel Order</button>    
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

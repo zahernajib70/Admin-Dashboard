@@ -1,0 +1,26 @@
+<div class="main is-info">
+    <h1>Go2Parts</h1>
+    <p id="font" >Login in with your Admin Account</p>
+    <p>Not signed in? <a>register here</a></p>
+    <form class="box">
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input #email1 class="input" type="email" placeholder="e.g. alex@example.com">
+          </div>
+        </div>
+      
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input #pass1 class="input" type="password" placeholder="********">
+          </div>
+        </div>
+      
+        <button class="button" style="background-color: #012970;color: white;"
+        [ngClass]="{'is-loading': isLOading === true}"
+        (click)="login(email1.value,pass1.value)">Login</button>
+      </form>
+      <p>For further help <a>Reach Our Support</a></p>
+
+</div>

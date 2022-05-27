@@ -1,0 +1,28 @@
+<!-- 
+<div class="prviewContainer">
+    <div
+     *ngFor="let image of item.url"
+     class="prviewImage"
+    [ngStyle]="{'background-image':'url('+image+')'}"></div>
+</div> -->
+
+<div   >
+    <p style="font-size: 20px;"><strong>Shop Name</strong></p>
+    <input    #itemPrice type="text"  id="shopname"  [ngModel]="shopname" (keyUp.enter)="editname(itemPrice.value)">
+</div>
+<div>
+    <p style="font-size: 20px;"><strong>Address</strong></p>
+    <input #itemQuantity type="text"  id="address"  [ngModel]="address" (keyUp.enter)="editQuantity(itemQuantity.value)">
+</div>
+<div>
+    <p style="font-size: 20px;"><strong>Area Location</strong></p>
+    <input #itemCategory type="text" id="arealocation"     [ngModel]="Arealocation" (keyUp.enter)="editCategory(itemCategory.value)" style="width: 10rem;">
+</div>
+<div>
+    <p style="font-size: 20px;"><strong>Description</strong></p>
+    <input #itemTopics type="text" [ngModel]="Description" id="description" (keyUp.enter)="editTopic(itemTopics.value)" style="width: 10rem;">
+</div>
+<footer class="modal-card-foot">
+    <button class="button">Cancel</button>
+    <button class="button is-danger" (click)="submit()" >Update</button>
+</footer>

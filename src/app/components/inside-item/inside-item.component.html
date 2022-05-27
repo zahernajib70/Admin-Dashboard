@@ -1,0 +1,40 @@
+<!-- 
+<div class="prviewContainer">
+    <div
+     *ngFor="let image of item.url"
+     class="prviewImage"
+    [ngStyle]="{'background-image':'url('+image+')'}"></div>
+</div> -->
+<div   >
+    <p style="font-size: 20px;"><strong>Item Price $</strong></p>
+    <input    #itemPrice type="text" value="ietmssss"  [ngModel]="item.price" (keyUp.enter)="editPrice(itemPrice.value)">
+</div>
+<div>
+    <p style="font-size: 20px;"><strong>Item Quantity</strong></p>
+    <input #itemQuantity type="text" [ngModel]="item.quantity" (keyUp.enter)="editQuantity(itemQuantity.value)">
+</div>
+<div>
+    <p style="font-size: 20px;"><strong>Item Category</strong></p>
+    <input #itemCategory type="text"     [ngModel]="item.category" (keyUp.enter)="editCategory(itemCategory.value)" style="width: 10rem;">
+</div>
+<div>
+    <p style="font-size: 20px;"><strong>Item Topic</strong></p>
+    <input #itemTopics type="text" [ngModel]="item.topics" (keyUp.enter)="editTopic(itemTopics.value)" style="width: 10rem;">
+</div>
+<div>
+    <p style="font-size: 20px;"><strong>Item Description</strong></p>
+    <textarea #itemDescription type="text" [ngModel]="item.description" (keyUp.enter)="editDescription(itemDescription.value)" style="width: 100%;"></textarea>
+</div>
+<div>
+    <p style="font-size: 20px;"><strong>Item Ingredients</strong></p>
+    <span *ngFor="let ingredient of item.ingredients" style="font-weight: bold;margin-right: 10px;margin-top: 8px;"
+        class="tag is-warning is-small">
+        {{ingredient}}
+        <button class="delete is-small" (click)="removeIngredient(item.ingredients,ingredient)"></button>
+    </span>
+        <input #newIngredient type="text" style="width: 10rem;
+        border: solid 1px grey;padding-right: 0.4rem;padding-left: 0.4rem;
+        border-radius: 0.5rem;padding-top: 1px;padding-bottom: 1px;" 
+        placeholder="+ Add ingredient" (keyUp.enter)="addIngredient(item.ingredients,newIngredient.value)">
+
+</div>

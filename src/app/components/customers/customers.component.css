@@ -1,0 +1,82 @@
+.main-customers{width: 100%;height: 100%;}
+.mock-line{background-color: rgba(128, 128, 128, 0.425);width: 100%;margin-top: 5%;margin-bottom: 5%;height: 1px;}
+.top-bar{width: 100%;height:8.5vh;
+display: flex;align-items:center;justify-content: space-between;padding-left:1.5rem;padding-right: 1.5rem;}
+input,textarea{width: 17rem;margin-right: 1%;border-radius: 0.5rem;border: none;font-size: 16px;padding: 4px;padding-left: 10px;
+animation-name: input-anim;animation-duration: 500ms;transition: ease-in-out;}
+@keyframes input-anim {
+    from {width: 1rem;}
+    to {width: 17rem;}
+}
+.search-button{border: none;margin-right: 1%;cursor: pointer;padding: 7px;
+border-radius: 0.5rem;transition: 200ms ease-in-out;font-weight: bold;background-color: white;}
+.search-button:hover{transform: scale(105%);background-color: rgb(3, 129, 56);color: white;}
+.search-space{position: absolute;width: 21.5rem;top: 0;right: 0;background-color: rgb(244, 253, 235);height: 100Vh;
+animation-name: search-space-anim-in;animation-duration: 500ms;transition: ease-in-out;
+box-shadow: -3px 0 5px -2px grey;z-index: 5;}
+.search-space-top{width: 90%;margin-left: 7.5%;margin-top: 5%;display: flex;flex-direction: row;
+align-items: center;gap: 0.5rem;}
+.search-input{border: solid 1px grey;}
+@keyframes search-space-anim-in {
+    from {width: 1rem;}
+    to {width: 21.5rem;}
+}
+@keyframes search-space-anim-out {
+    from {width: 21.5rem;}
+    to {width: 0rem;}
+}
+
+h3{padding-left: 1rem;font-weight: bold;color: white;}
+.toggle-details-container{display: flex;flex-direction: row;align-items: center;}
+.toggle-details{display: flex;flex-direction: row;align-items: center;gap: 1rem;margin-right: 2rem;}
+.showDetails{margin-left: 1rem;min-width: 4rem;}
+.filter-dropdown{z-index: 3;}
+.filterBy-span{width: 5rem;padding: 4px;background-color: white;font-size: 14px;
+text-align: center;font-weight: bold;cursor: pointer;}
+.drop-down-container{width: 5rem;background-color: white;display: flex;list-style-type: none;padding: 4px;
+flex-direction: column;align-items: center;justify-content: center;position: absolute;max-height: 5rem;
+animation-name: drop-down-anim-in;animation-duration: 200ms;transition: ease-in-out;
+box-shadow: 0 3px 3px 2px rgba(128, 128, 128, 0.445);}
+.drop-down-container li{font-size: 14px;cursor: pointer;border-bottom: solid 1px rgba(128, 128, 128, 0.37);
+width: 100%;text-align: center;}
+.drop-down-container li:last-child{border-bottom: none;}
+.drop-down-container li:hover{opacity: 0.8;}
+@keyframes drop-down-anim-in {
+    from {height: 1rem;}
+    to {height: 5rem;}
+}
+.top-table{width: 100%;display: flex;flex-direction: row;align-items: center;gap: 1rem;flex-wrap: nowrap;
+border-bottom: solid 1px rgba(128, 128, 128, 0.848);padding-top: 5px;padding-bottom: 5px;
+font-weight: bold;text-align: center;position: sticky;top:0;}
+.customers{overflow-y: scroll;height: 100vh;padding-top: 1.5%;}
+.customers ul{list-style-type: none;width: 95%;margin:2.5%;margin-top: 0.5%;overflow: hidden;padding: 1rem;
+height: 84vh;overflow-y: scroll;
+background-color: #e5e9ecd3;border-radius: 0.5rem;box-shadow: 2px 2px 5px 2px rgba(20, 20, 20, 0.096);}
+.customers li{width: 100%;display: flex;flex-direction: row;align-items: center;gap: 1rem;flex-wrap: nowrap;
+border-bottom: solid 1px rgba(77, 76, 76, 0.182);padding-top: 5px;padding-bottom: 5px;text-align: center;
+transition: 200ms ease-in-out;}   
+.customers li:hover{background-color: rgba(204, 202, 202, 0.363);}
+.customers-individual{width: 10rem;overflow: hidden}
+.cancel{background-color: tomato;width: 5rem;cursor: pointer;border-radius: 0.5rem;transition: 300ms ease-in-out;color: bisque;}
+.cancel:hover{background-color: brown;color: white;}
+.canceled{background-color: tomato;width: 5rem;cursor: default;border-radius: 0.5rem;color: bisque;
+opacity: 0.4;}
+.edit{background-color: rgb(211, 253, 133);width: 5rem;cursor: pointer;border-radius: 0.5rem;transition: 300ms ease-in-out;color: rgb(0, 0, 0);}
+.edit:hover{background-color: rgb(105, 75, 19);color: white;}
+.freeze{background-color: rgb(71, 243, 255);width: 5rem;cursor: pointer;border-radius: 0.5rem;transition: 300ms ease-in-out;color: rgb(0, 0, 0);}
+.freeze:hover{background-color: rgb(33, 72, 124);color: white;}
+
+
+
+#addbutton {
+    line-height: 12px;
+    width: 18px;
+    font-size: 8pt;
+    font-family: tahoma;
+    margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    top:20;
+    right:0;
+    color: green;
+}

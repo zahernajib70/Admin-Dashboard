@@ -1,0 +1,111 @@
+.main-customers{width: 100%;height: 100%;}
+.mock-line{background-color: rgba(128, 128, 128, 0.425);width: 92.5%;margin-left: 1.25%;margin-top: 0.5rem;margin-bottom: 0.5rem;height: 1px;}
+ul{list-style-type: none;display: flex;flex-direction: row;width: 100%;flex-wrap: wrap;
+overflow: hidden;padding: 1rem;height: 91.5vh;}
+.top-bar{width: 100%;height:8.5vh;
+display: flex;align-items:center;padding-left:1.5rem;padding-right: 1.5rem;}
+input,textarea{width: 17rem;margin-right: 1%;border-radius: 0.5rem;border: none;font-size: 16px;padding: 4px;padding-left: 10px;
+animation-name: input-anim;animation-duration: 500ms;transition: ease-in-out;}
+@keyframes input-anim {
+    from {width: 1rem;}
+    to {width: 17rem;}
+}
+.search-button{border: none;margin-right: 1%;cursor: pointer;padding: 7px;
+border-radius: 0.2rem;transition: 200ms ease-in-out;font-weight: bold;background-color: white;}
+.search-button:hover{transform: scale(105%);background-color: #3D8ED0;color: white;}
+.search-space{position: absolute;width: 21.5rem;top: 8.5vh;background-color: #f3f3f3;
+animation-name: search-space-anim-in;animation-duration: 500ms;transition: ease-in-out;height: 91.5vh;
+box-shadow: 2px 2px 3px rgba(126, 124, 124, 0.373);}
+.search-input{border: solid 1px grey;}
+@keyframes search-space-anim-in {
+    from {height: 0;}
+    to {height: 100Vh;}
+}
+@keyframes search-space-anim-out {
+    from {width: 21.5rem;}
+    to {width: 0rem;}
+}
+
+h3{padding-left: 1rem;font-weight: bold;}
+.toggle-details-container{display: flex;flex-direction: row;align-items: center;}
+.toggle-details{display: flex;flex-direction: row;align-items: center;gap: 1rem;margin-right: 2rem;cursor: pointer;}
+.showDetails{margin-left: 1rem;min-width: 4rem;color: white;font-size: 14px;}
+.filter-dropdown{z-index: 3;}
+.filterBy-span{width: 5rem;padding: 4px;background-color: white;font-size: 14px;
+text-align: center;font-weight: bold;cursor: pointer;}
+.drop-down-container{width: 5rem;background-color: white;display: flex;list-style-type: none;padding: 4px;
+flex-direction: column;align-items: center;justify-content: center;position: absolute;max-height: 5rem;
+animation-name: drop-down-anim-in;animation-duration: 200ms;transition: ease-in-out;
+box-shadow: 0 3px 3px 2px rgba(128, 128, 128, 0.445);}
+.drop-down-container li{font-size: 14px;cursor: pointer;border-bottom: solid 1px rgba(128, 128, 128, 0.37);
+width: 100%;text-align: center;}
+.drop-down-container li:last-child{border-bottom: none;}
+.drop-down-container li:hover{opacity: 0.8;}
+@keyframes drop-down-anim-in {
+    from {height: 1rem;}
+    to {height: 5rem;}
+}
+
+.Top-Options{width: 100%;height: 2rem;}
+.Top-Options ul{padding-top: 0.5rem;max-height: 3rem;}
+.Top-Options li{margin-right: 1rem;cursor: pointer;color: grey;transition: 500ms ease-in-out;
+max-height: 3rem;}
+.Top-Options li:hover{font-weight: bold;}
+
+.items{overflow-y: scroll;}
+.items li{margin-right: 2%;margin-bottom: 2rem;transition: 300ms ease-in-out;padding-bottom: 1rem;border-radius: 1rem;
+box-shadow: 0 4px 2px 2px rgba(90, 89, 89, 0.164);max-height: 18rem;}
+.poster{width: 16rem;height: 10rem;background-position: center;background-repeat: no-repeat;
+background-size: cover;border-top-left-radius: 0.5rem;border-top-right-radius: 0.5rem;transition: 300ms ease-in-out;margin-bottom: 0.5rem;}
+.items li:hover{transform: scale(102%);cursor: pointer;background-color: rgba(178, 218, 250, 0.808)}
+.info{display: flex;flex-direction: row;align-items: center;justify-content: space-between;
+padding-left: 1rem;padding-right: 1rem;}
+@keyframes bottom-info-anim-in {
+    from {height: 1rem;}
+    to {height: 4rem;}
+}
+.bottom-info{animation-name: bottom-info-anim-in;animation-duration: 500ms;transition: ease-in-out;
+height: 4rem;}
+/* .buttons{display: flex;flex-direction: row;justify-content: center;gap: 1rem;margin-top: 0.5rem;z-index: 2;}
+.buttons button{width: 45%;font-weight: bold;transition: 200ms ease-in-out;border: none;border-radius: 0.25rem;
+padding-top: 5px;padding-bottom: 5px;}
+.hide-button{background-color: orange;color: white;}
+.hide-button:hover{background-color: yellow;color: black;}
+.delete-button{background-color: tomato;}
+.delete-button:hover{background-color: red;color: white;} */
+.is-active{animation-name: add-item-modal-fade-in;animation-duration: 500ms;transition: ease-in-out;}
+@keyframes add-item-modal-fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+.input-container{width: 100%;display: flex;flex-direction: row;align-items: center;
+justify-content: space-between;margin-top: 1rem;}
+.add-item-modal-input{border: solid 1px grey;}
+.add-item-modal-input-special{width: 15.25rem;animation-name: input-anim-special;border: solid 1px grey;}
+@keyframes input-anim-special {
+    from {width: 1rem;}
+    to {width: 15.25rem;}
+}
+.image-file-input{width: 100%;
+display: flex;align-items: center;justify-content: center;margin-top: 2.5rem;}
+.prviewContainer{width: 100%;height: 15rem;overflow-x: scroll;display: flex;flex-direction: row;flex-wrap: nowrap;
+scroll-snap-type:x mandatory;margin-top: 2rem;margin-bottom: 3rem;border:solid 1px grey;border-radius: 0.5rem;}
+.prviewImage{width: 100%;height: 100%;background-position: center;background-size: cover;scroll-behavior: smooth;
+flex-grow: 0;flex-shrink: 0;scroll-snap-align: start;}
+.add-item-modal-textarea{border: solid 1px grey;min-height: 6rem;}
+.add-item-modal-label{font-weight: bold;}
+.add-modal-ingred-container{display: flex;justify-content: center;align-items: center;margin-right: 4px;}
+.ingredients-container{width: 100%;min-height: 2rem;padding-top: 5px;}
+.tag{animation-name: ingredient-tag-in;animation-duration: 200ms;transition: ease-in-out;}
+@keyframes ingredient-tag-in {
+    from {width: 1rem;}
+    to {width: 4rem;}
+}
+.upload-progress-container{width: 10rem;height: 2.5rem;background-color: rgb(47, 48, 47);position: fixed;
+bottom: 4%;right: 2.5%;border-radius: 0.5rem;animation-name: upload-progress-in;animation-duration: 700ms;transition: ease-in-out;
+display: flex;flex-direction: row;align-items: center;justify-content: space-evenly;cursor: default;
+box-shadow: 0 5px 4px 2px rgba(170, 169, 169, 0.288);}
+@keyframes upload-progress-in {
+    from {width: 1rem;}
+    to {width: 10rem;}
+}
