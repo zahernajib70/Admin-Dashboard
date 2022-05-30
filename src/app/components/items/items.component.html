@@ -140,7 +140,7 @@
 
         <!-- items list -->
         <ul class="items">
-            <li *ngFor="let item of items" (click)="itemModal(item.key,item.title)">
+            <li *ngFor="let item of items" (click)="itemModal(item.id,item.title)">
                 <div class="poster" [ngStyle]="{'background-image': 'url('+item.url[0]+')'}"></div>
                 <div class="info">
                     <p style="font-weight: bold;font-size: 18px;">{{item.title}}</p>

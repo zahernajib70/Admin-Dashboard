@@ -8,7 +8,7 @@
 
 <div   >
     <p style="font-size: 20px;"><strong>Shop Name</strong></p>
-    <input    #itemPrice type="text"  id="shopname"  [ngModel]="shopname" (keyUp.enter)="editname(itemPrice.value)">
+    <input    #itemPrice type="text"  id="shopname"  [ngModel]="shopname" (keyUp)="editname(itemPrice.value)">
 </div>
 <div>
     <p style="font-size: 20px;"><strong>Address</strong></p>
@@ -26,3 +26,4 @@
     <button class="button">Cancel</button>
     <button class="button is-danger" (click)="submit()" >Update</button>
 </footer>
+<h2>{{shopname}}</h2>

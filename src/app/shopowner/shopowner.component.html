@@ -33,7 +33,7 @@
             <div style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
               <h5 class="card-title"> Edit Shopowners
               </h5>
-              <button id="Addbutton" type="button" class="btn btn-primary" (click)="showItemModal=true">Add shopowner</button>
+              <!-- <button id="Addbutton" type="button" class="btn btn-primary" (click)="showItemModal=true">Add shopowner</button> -->
    
             </div>
             <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
@@ -54,7 +54,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let array of myArray">
+                <tr *ngFor="let array of myArray1">
                   <th scope="row" ></th>
                   <td>{{array.shopname}}</td>
                   <td>{{array.email}}</td>
@@ -62,7 +62,7 @@
                   <td>{{array.Address}}</td>
           
                   
-                  <td> <span class="badge bg-success" style="cursor: pointer;" (click)="Approve('array.uid')">Approve</span> &nbsp; <span style="cursor: pointer;" class="badge bg-danger" (click)="reject('array.uid')">Reject</span></td>
+                  <td> <span class="badge bg-success" style="cursor: pointer;" (click)="Approve(array.uid)">Approve</span> &nbsp; <span style="cursor: pointer;" class="badge bg-danger" (click)="reject(array.uid)">Reject</span></td>
                 </tr>
               </tbody>
             </table>
@@ -94,18 +94,20 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">ShopName</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">phone</th>
                     <th scope="col">Address</th>
+                    <th scope="col">Arealocation</th>
+                    <th scope="col">phone</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let array of myArray" >
                     <th scope="row" ></th>
                     <td>{{array.shopname}}</td>
-                    <td>{{array.email}}</td>
-                    <td>{{array.phone}}</td>
                     <td>{{array.Address}}</td>
+                    <td>{{array.areaLocation}}</td>
+                    <td>{{array.phone}}</td>
+                   
                   </tr>
                 </tbody>
               </table>

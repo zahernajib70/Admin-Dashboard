@@ -21,17 +21,21 @@ export class ShopownerComponent implements OnInit {
   constructor(private fbs: AngularFirestore,) { }
 
   ngOnInit(): void {
-    const data=this.fbs.collection('shopOwners',ref=>ref.where('isverified','==','true')).valueChanges().subscribe(val=>{this.myArray = val;
+    this.getVerified();
+    this.getunverified();
+  }
+  getVerified(){
+    this.fbs.collection('shopOwners',ref=>ref.where('isverified','==',true)).valueChanges().subscribe(val=>{this.myArray = val;
       console.log(val);
      }
      );
-  }
-  getVerified(){
-    
 
   }
   getunverified(){
-    
+    this.fbs.collection('shopOwners',ref=>ref.where('isverified','==',false)).valueChanges().subscribe(val=>{this.myArray1 = val;
+      console.log(val);
+     }
+     );
   }
   changeName(name:string){
     this.shopname=name;
@@ -45,7 +49,7 @@ export class ShopownerComponent implements OnInit {
 
   Approve(shopid:string){
     this.fbs.collection('shopOwners').doc(shopid).update({
-      isVerified:true
+      isverified:true
     }).catch(error=>{alert(error)});
   }
   reject(shopid:string){

@@ -51,8 +51,11 @@ isverified=false;
     this.destroy$.next();
     this.destroy$.complete();
   }
-  editname(shopname:string){
-    this.firestore.collection('items').doc(this.itemId).update({shopname:+shopname}).catch(error=>alert(error))
+  editname(shopname1:string){
+    this.shopname=shopname1;
+    console.log(shopname1);
+   
+    // this.firestore.collection('items').doc(this.itemId).update({shopname:+shopname1}).catch(error=>alert(error))
   }
   editQuantity(quantity:string){
     this.firestore.collection('items').doc(this.itemId).update({quantity:+quantity}).catch(error=>alert(error))

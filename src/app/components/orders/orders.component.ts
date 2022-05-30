@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-orders',
@@ -16,54 +21,55 @@ export class OrdersComponent implements OnInit {
   dropDownOn2=false;
   chosenTopic='new';
   isCancelClicked=false;
+  isStartClicked=false;
   orderToCancelId='';
+  orderToStartId='';
+  t=Date.now();
+  userid='';
+  username='';
+  shopname='';
+  shopid='';
   loading=true;
-  constructor(private database:AngularFireDatabase) { }
+  uid: string;
+  orders:any;
+  private readonly destroy$ = new Subject();
+  private readonly destroy1$ = new Subject();
+  private readonly destroy2$ = new Subject();
 
-  ngOnInit(){
-    this.getTodayOrders();
-    this.getTopPriceOrders();
+  constructor(private auth:AngularFireAuth,private firestore:AngularFirestore) { }
+  ngOnInit() {
+    this.getUser().then(() => {
+      this.firestore.collection('orders',ref=>ref.orderBy('timestamp','desc')).valueChanges().pipe(takeUntil(this.destroy2$))
+      .subscribe(res=>{
+        this.orders=res;
+      });
+    })
   }
-  getTodayOrders(){
-    this.database.list('orders').valueChanges().subscribe(res=>{
-      this.todayOrders=res;
-      this.loading=false;
-    })  
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.destroy1$.next();
+    this.destroy1$.complete();
+    this.destroy2$.next();
+    this.destroy2$.complete();
+
   }
-  getTopPriceOrders(){
-    this.database.list('orders',ref=>ref.orderByChild('totalPrice')).valueChanges().subscribe(res=>{
-      this.topPriceOrders=res;
-      this.loading=false;
-    }) 
+
+  
+  getUser() {
+    var promise = new Promise<void>((resolve, reject) => {
+      this.auth.authState.pipe(takeUntil(this.destroy$)).subscribe(user => {
+        this.uid = user.uid;
+        resolve();
+      });
+    });
+    return promise;
   }
+
+
   showInputMeth(){
     this.showInput=!this.showInput;
   }
-  setFilterBy(filter:string){
-    this.filterBy=filter;
-    this.dropDownOn1=false;
-  }
-  filter(filterByValue:string){
-    this.database.list('orders/',ref=>ref.orderByChild(`${this.filterBy}`)
-    .equalTo(filterByValue)).valueChanges().subscribe(res=>{
-      this.todayOrders=res;
-      this.loading=false;
-    })  
-  }
-  setorderToCancel(orderID:string){
-    this.orderToCancelId=orderID;
-    this.isCancelClicked=true;
-  }
-  cancelOrder(){
-    if(this.orderToCancelId!=''){
-      this.database.object(`/orders/${this.orderToCancelId}`).update({status:'canceled'}).catch(error=>{
-        alert(error);
-        return ;}).then(res=>{
-          this.isCancelClicked=false;
-        })
-    }
-    else{
-      alert('Specify Order to Delete')
-    }
-  }
+
 }
