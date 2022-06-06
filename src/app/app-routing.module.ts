@@ -7,10 +7,11 @@ import { ItemsComponent } from './components/items/items.component';
 import { LoginComponent } from './components/login/login.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { IsSignedInGuard } from './is-signed-in.guard';
+import { MapComponent } from './map/map.component';
 import { ShopownerComponent } from './shopowner/shopowner.component';
 
 const routes: Routes = [
-  {path:"",component:DashboardComponent,},
+  {path:"",component:DashboardComponent,canActivate:[IsSignedInGuard]},
   {path:"login",component:LoginComponent},
   {path:"dashboard",component:DashboardComponent,canActivate:[IsSignedInGuard]},
   {path:"customers",component:CustomersComponent,canActivate:[IsSignedInGuard]},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"items",component:ItemsComponent,canActivate:[IsSignedInGuard]},
   {path:"shopowner",component:ShopownerComponent,canActivate:[IsSignedInGuard]},
   {path:"editshop",component:EditShopComponent,canActivate:[IsSignedInGuard]},
+  {path:"map",component:MapComponent,canActivate:[IsSignedInGuard]},
 
 
 ];

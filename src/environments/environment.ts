@@ -12,6 +12,11 @@ export const environment = {
     messagingSenderId: "225368192480",
     appId: "1:225368192480:web:ee2fa075afd79ef20aa785"
   }
+  ,
+  mapbox: {
+    accessToken: 'pk.eyJ1IjoiemFoZXJuYWppYiIsImEiOiJjbDJtNHkyY20wazdlM2NuazdwamV5bGMxIn0.TPaPQ_nBYCWwyeTAIvHWfw'
+  }
+
 };
 
 /*

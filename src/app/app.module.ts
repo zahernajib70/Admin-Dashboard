@@ -20,6 +20,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EditShopComponent } from './components/edit-shop/edit-shop.component';
 import { ShopownerComponent } from './shopowner/shopowner.component';
 import { AddshopownerComponent } from './addshopowner/addshopowner.component';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { AddshopownerComponent } from './addshopowner/addshopowner.component';
     EditShopComponent,
     ShopownerComponent,
     AddshopownerComponent,
+    MapComponent,
    
     
     ],

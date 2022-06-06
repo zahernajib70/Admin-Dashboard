@@ -77,6 +77,11 @@ export class AppComponent {
     this.chosen='items';
     this.router.navigate(['items']);
   }
+
+  tomap(){
+    this.chosen='map';
+    this.router.navigate(['map']);
+  }
   toOrders(){
     this.chosen='orders';
     this.router.navigate(['orders']);

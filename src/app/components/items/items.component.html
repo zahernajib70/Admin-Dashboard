@@ -143,7 +143,8 @@
             <li *ngFor="let item of items" (click)="itemModal(item.id,item.title)">
                 <div class="poster" [ngStyle]="{'background-image': 'url('+item.url[0]+')'}"></div>
                 <div class="info">
-                    <p style="font-weight: bold;font-size: 18px;">{{item.title}}</p>
+                    <p *ngIf="item.title.length<=10" style="font-weight: bold;font-size: 18px;">{{item.title}}</p>
+                    <p *ngIf="item.title.length>10" style="font-weight: bold;font-size: 18px;">{{item.title.substring(0,10)}}</p>
                 </div>
                 <div class="bottom-info">
                     <div class="info">
